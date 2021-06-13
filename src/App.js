@@ -1,25 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import DropzoneComponent from './DropZone';
+import { Formik } from 'formik';
+import PlaceHolder from './atom/placeHolder';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className='App'>
+            <>
+                <Formik
+                    initialValues={{ image: '' }}
+                    onSubmit={() => {
+                        console.log('yes');
+                    }}
+                >
+                    {() => {
+                        return (
+                            <div>
+                                <DropzoneComponent
+                                    name='image'
+                                    Placeholder={PlaceHolder}
+                                />
+                                ;
+                            </div>
+                        );
+                    }}
+                </Formik>
+                {/* <DropzoneComponent /> */}
+            </>
+        </div>
+    );
 }
 
 export default App;
